@@ -1,0 +1,51 @@
+# MT reconocedora: L = { ww | w en {a, b}* }
+mt:
+  states: [q0, q1, q2, q3, q4, q5, q6, q7, q8, qf]
+  input_alphabet: [a, b]
+  tape_alphabet: [a, b, B, X, Y, U, V, Z]
+  initial_state: q0
+  accept_states: [qf]
+  transitions:
+    - {state: q0, read: [a, B], write: [B, X], move: R, next: q1}
+    - {state: q0, read: [b, B], write: [B, Y], move: R, next: q1}
+    - {state: q0, read: [U, B], write: [B, U], move: L, next: q4}
+    - {state: q0, read: [V, B], write: [B, V], move: L, next: q4}
+    - {state: q0, read: [B, B], write: [B, B], move: S, next: qf}
+    - {state: q1, read: [a, B], write: [B, a], move: R, next: q1}
+    - {state: q1, read: [b, B], write: [B, b], move: R, next: q1}
+    - {state: q1, read: [U, B], write: [B, U], move: L, next: q2}
+    - {state: q1, read: [V, B], write: [B, V], move: L, next: q2}
+    - {state: q1, read: [B, B], write: [B, B], move: L, next: q2}
+    - {state: q2, read: [a, B], write: [B, U], move: L, next: q3}
+    - {state: q2, read: [b, B], write: [B, V], move: L, next: q3}
+    - {state: q3, read: [a, B], write: [B, a], move: L, next: q3}
+    - {state: q3, read: [b, B], write: [B, b], move: L, next: q3}
+    - {state: q3, read: [X, B], write: [B, X], move: R, next: q0}
+    - {state: q3, read: [Y, B], write: [B, Y], move: R, next: q0}
+    - {state: q4, read: [X, B], write: [B, X], move: L, next: q4}
+    - {state: q4, read: [Y, B], write: [B, Y], move: L, next: q4}
+    - {state: q4, read: [B, B], write: [B, B], move: R, next: q5}
+    - {state: q5, read: [X, B], write: [a, Z], move: R, next: q6}
+    - {state: q5, read: [Y, B], write: [b, Z], move: R, next: q6}
+    - {state: q5, read: [Z, B], write: [B, Z], move: S, next: qf}
+    - {state: q6, read: [X, a], write: [a, X], move: R, next: q6}
+    - {state: q6, read: [Y, a], write: [a, Y], move: R, next: q6}
+    - {state: q6, read: [Z, a], write: [a, Z], move: R, next: q6}
+    - {state: q6, read: [X, b], write: [b, X], move: R, next: q6}
+    - {state: q6, read: [Y, b], write: [b, Y], move: R, next: q6}
+    - {state: q6, read: [Z, b], write: [b, Z], move: R, next: q6}
+    - {state: q6, read: [U, a], write: [B, Z], move: L, next: q7}
+    - {state: q6, read: [V, b], write: [B, Z], move: L, next: q7}
+    - {state: q7, read: [Z, B], write: [B, Z], move: L, next: q7}
+    - {state: q7, read: [X, B], write: [B, X], move: L, next: q8}
+    - {state: q7, read: [Y, B], write: [B, Y], move: L, next: q8}
+    - {state: q7, read: [B, B], write: [B, B], move: R, next: q5}
+    - {state: q8, read: [X, B], write: [B, X], move: L, next: q8}
+    - {state: q8, read: [Y, B], write: [B, Y], move: L, next: q8}
+    - {state: q8, read: [Z, B], write: [B, Z], move: R, next: q5}
+    - {state: q8, read: [B, B], write: [B, B], move: R, next: q5}
+  inputs:
+    - "aabaab"
+    - "abbabb"
+    - "aabab"
+    - "abbaab"
