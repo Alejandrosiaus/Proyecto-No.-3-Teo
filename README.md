@@ -2,7 +2,7 @@
 
 Simulador de Máquinas de Turing (MT) de una cinta. Lee la descripción formal de la MT desde un archivo YAML, simula cada cadena de `inputs`, muestra la lista completa de descripciones instantáneas (IDs), la configuración final de la cinta y si la cadena fue aceptada o rechazada.
 
-Video: (pendiente — enlace de YouTube no listado)
+Video: https://www.youtube.com/watch?v=2HxMutj4Ryg
 
 ## Requisitos
 
